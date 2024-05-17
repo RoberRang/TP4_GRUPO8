@@ -6,7 +6,7 @@ import entidad.Especialidad;
 
 public interface IDaoEspecialidad {
   
-  	public void Add(Especialidad especialidad);
+  	  public void Add(Especialidad especialidad);
 	
 	  public List<Especialidad> ReadAll();
 	
