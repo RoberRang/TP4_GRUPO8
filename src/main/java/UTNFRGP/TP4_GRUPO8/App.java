@@ -84,6 +84,8 @@ public class App
     	    daopac.Add(pac1);
     	}
     	
+    	//Alta de turnos 
+    	
     	daoTurno daotur = new daoTurno();
     	List<Medico> medicos = daomed.ReadAll();
     	List<Paciente> pacientes = daopac.ReadAll();
@@ -158,6 +160,34 @@ public class App
             Usuario usuarioDelMedico = turno.getMedico().getUsuario();
             System.out.println("   Usuario del Médico: " + usuarioDelMedico.getNombre());
         }
+        
+        
+      //Alta, Modificacion y borrado de turno
+        
+        Turno turn1 = new Turno();
+	   
+	    turn1.setEstado(EstadoTurno.PENDIENTE);
+	    turn1.setFecha("1988-05-18");
+	    turn1.setHora("20:00");
+	    turn1.setObservacion("N/A");
+	    
+	    Medico medico = medicos.get(1);
+	    Paciente paciente = pacientes.get(1);
+	    
+	    turn1.setMedico(medico);
+	    turn1.setPaciente(paciente);
+	    
+	    daotur.Add(turn1);
+	    
+	    //Modificacion
+        turn1.setEstado(EstadoTurno.PRESENTE);
+        turn1.setObservacion("Paciente atendido por control");
+        daotur.Update(turn1);
+        
+        System.out.println(turn1.toString());
+        
+        //Baja
+        daotur.Delete(turn1);
         
     }
 }
