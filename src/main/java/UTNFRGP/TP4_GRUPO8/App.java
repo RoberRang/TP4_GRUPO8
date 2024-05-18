@@ -107,7 +107,57 @@ public class App
     	    
     	    daotur.Add(turn1);
     	}
-    
-				
+    	
+    	//ABML TP4 
+  
+        
+        //Alta, modificacion y borrado de paciente
+        
+        Paciente pac2 = new Paciente();
+	    
+        pac2.setNombre("PRUEBA_ABML");
+        pac2.setApellido("Ramirez");
+        pac2.setCorreoElectronico("paciente_90@gmail.com");
+        pac2.setDireccion("La plata 403");
+        pac2.setDni("2588632");
+        pac2.setFechaNacimiento("1988-05-01");
+        pac2.setLocalidad("CABA");
+        pac2.setProvincia("Buenos Aires");
+        pac2.setTelefono("215585");
+	    
+	    daopac.Add(pac2);
+	    
+	    daopac.Delete(pac2);
+	    
+	    
+	      Paciente pac3 = new Paciente();
+		    
+	        pac3.setNombre("PRUEBA_ABML2");
+	        pac3.setApellido("Fernandez");
+	        pac3.setCorreoElectronico("paciente_90@gmail.com");
+	        pac3.setDireccion("La plata 403");
+	        pac3.setDni("2588632");
+	        pac3.setFechaNacimiento("1988-05-01");
+	        pac3.setLocalidad("CABA");
+	        pac3.setProvincia("Buenos Aires");
+	        pac3.setTelefono("215585");
+		    
+		    daopac.Add(pac3);
+		    
+		    pac3.setDni("11111111");
+		    pac3.setCorreoElectronico("CORREOMOFICADO POR ABML");
+		    pac3.setProvincia("MENDOZA");
+		    daopac.Update(pac3);
+	    
+	    // Listado de turnos con sus relaciones 
+	  	
+    	List<Turno> todosLosTurnos = daotur.ReadAll();
+        for (Turno turno : todosLosTurnos) {
+            System.out.println("Id Turno: " + turno.getId() + ", Fecha: " + turno.getFecha() + ", Médico: " + turno.getMedico().getNombre());
+            
+            Usuario usuarioDelMedico = turno.getMedico().getUsuario();
+            System.out.println("   Usuario del Médico: " + usuarioDelMedico.getNombre());
+        }
+        
     }
 }

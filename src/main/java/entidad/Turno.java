@@ -103,6 +103,10 @@ public class Turno implements Serializable{
 	public void setEstado(EstadoTurno estado) {
 		this.estado = estado;
 	}
+	
+	public long getId() {
+		return id;
+	}
 
    
     

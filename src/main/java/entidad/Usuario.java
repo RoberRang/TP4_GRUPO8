@@ -35,7 +35,7 @@ public class Usuario implements Serializable {
     public Usuario() {
         // Puedes inicializar atributos aquí si es necesario
     }
-
+    
     // Getters y setters
     public Long getId() {
         return id;
