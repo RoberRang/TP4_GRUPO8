@@ -50,7 +50,7 @@ public class App
     	    med1.setApellido("Medico_Ape_" + i);
     	    med1.setSexo('M');
     	    med1.setFNac(LocalDate.parse("1988-05-01"));
-    	    med1.setDirección("Calle Nula " + i);
+    	    med1.setDireccion("Calle Nula " + i);
     	    med1.setLocalidad("Localidad_" + i);
     	    med1.setCorreo("medico_" + i + "_@intramed.net");
     	    med1.setTeléfono("telefono_" + i);

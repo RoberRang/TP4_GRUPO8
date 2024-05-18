@@ -26,45 +26,45 @@ public class Medico implements Serializable {
 	@Id
 	@Column(name="Legajo")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Legajo;
+	private int legajo;
 	
 	@Column(name="Nombre")
-	private String Nombre;
+	private String nombre;
 	
 	@Column(name="Apellido")
-	private String Apellido;
+	private String apellido;
 	
 	@Column(name="Sexo")
-	private char Sexo;
+	private char sexo;
 	
 	@Column(name="FNac")
-	private LocalDate FNac;
+	private LocalDate fNac;
 	
 	@Column(name="Direccion")
-	private String Dirección;
+	private String direccion;
 	
 	@Column(name="Localidad")
-	private String Localidad;
+	private String localidad;
 	
 	@Column(name="Correo")
-	private String Correo;
+	private String correo;
 	
 	@Column(name="Telefono")
-	private String Teléfono; 
+	private String telefono; 
 	
 	//Agregamos atributo del tipo Usuario
 	@OneToOne(cascade = {CascadeType.ALL})
-	@JoinColumn (name="usuario")
-	private Usuario Usuario;
+	@JoinColumn (name="Id_Usuario")
+	private Usuario usuario;
 	
 	//Agregamos atributo del tipo Especialidad
 	@ManyToOne(cascade = {CascadeType.ALL})
-	@JoinColumn (name="especialidad")
-	private Especialidad Especialidad;
+	@JoinColumn (name="Id_Especialidad")
+	private Especialidad especialidad;
 	
 	//Agregamos listado de turnos
 	@OneToMany(cascade = {CascadeType.ALL})
-	@JoinColumn (name="id_Turno")
+	@JoinColumn (name="Id_Turno")
 	List<Turno> listaTurnos = new ArrayList<Turno>();
 	
 	public Medico() {
@@ -72,93 +72,93 @@ public class Medico implements Serializable {
 	}
 
 	public int getLegajo() {
-		return Legajo;
+		return this.legajo;
 	}
 
 	public void setLegajo(int legajo) {
-		Legajo = legajo;
+		this.legajo = legajo;
 	}
 
 	public String getNombre() {
-		return Nombre;
+		return this.nombre;
 	}
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
 
 	public String getApellido() {
-		return Apellido;
+		return this.apellido;
 	}
 
 	public void setApellido(String apellido) {
-		Apellido = apellido;
+		this.apellido = apellido;
 	}
 
 	public char getSexo() {
-		return Sexo;
+		return this.sexo;
 	}
 
 	public void setSexo(char sexo) {
-		Sexo = sexo;
+		this.sexo = sexo;
 	}
 
 	public LocalDate getFNac() {
-		return FNac;
+		return this.fNac;
 	}
 
 	public void setFNac(LocalDate fNac) {
-		FNac = fNac;
+		this.fNac = fNac;
 	}
 
-	public String getDirección() {
-		return Dirección;
+	public String getDireccion() {
+		return this.direccion;
 	}
 
-	public void setDirección(String dirección) {
-		Dirección = dirección;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 	public String getLocalidad() {
-		return Localidad;
+		return this.localidad;
 	}
 
 	public void setLocalidad(String localidad) {
-		Localidad = localidad;
+		this.localidad = localidad;
 	}
 
 	public String getCorreo() {
-		return Correo;
+		return this.correo;
 	}
 
 	public void setCorreo(String correo) {
-		Correo = correo;
+		this.correo = correo;
 	}
 
-	public String getTeléfono() {
-		return Teléfono;
+	public String getTelefono() {
+		return this.telefono;
 	}
 
-	public void setTeléfono(String teléfono) {
-		Teléfono = teléfono;
+	public void setTeléfono(String telefono) {
+		this.telefono = telefono;
 	}
 	
 	//Getters y Setters para usuario
 	public Usuario getUsuario() {
-		return Usuario;
+		return this.usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
-		Usuario = usuario;
+		this.usuario = usuario;
 	}
 
 	//Getters y Setters para especialidad
 	public Especialidad getEspecialidad() {
-		return Especialidad;
+		return this.especialidad;
 	}
 
 	public void setEspecialidad(Especialidad especialidad) {
-		Especialidad = especialidad;
+		this.especialidad = especialidad;
 	}
 
 	//Getters y Setters para lista turnos
@@ -172,9 +172,9 @@ public class Medico implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Medico [Legajo=" + Legajo + ", Nombre=" + Nombre + ", Apellido=" + Apellido + ", Sexo=" + Sexo
-				+ ", FNac=" + FNac + ", Dirección=" + Dirección + ", Localidad=" + Localidad + ", Correo=" + Correo
-				+ ", Teléfono=" + Teléfono + "]";
+		return "Medico [Legajo=" + legajo + ", Nombre=" + nombre + ", Apellido=" + apellido + ", Sexo=" + sexo
+				+ ", FNac=" + fNac + ", Dirección=" + direccion + ", Localidad=" + localidad + ", Correo=" + correo
+				+ ", Teléfono=" + telefono + "]";
 	}
 
 
