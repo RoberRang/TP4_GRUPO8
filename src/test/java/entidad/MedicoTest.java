@@ -47,7 +47,7 @@ public class MedicoTest {
     @Test
     public void testGetFNac() {
         medico = new Medico();
-        LocalDate ld = LocalDate.parse("02-01-1980", DateTimeFormatter.ofPattern("dd-MM-yyyy"));        
+        LocalDate ld = LocalDate.parse("02-01-1981", DateTimeFormatter.ofPattern("dd-MM-yyyy"));        
         medico.setFNac(ld);
         assertEquals(ld, medico.getFNac());
     }
