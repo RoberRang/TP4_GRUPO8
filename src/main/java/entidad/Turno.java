@@ -56,6 +56,56 @@ public class Turno implements Serializable{
     // Getters y Setters
     // Puedes generar automáticamente estos métodos en tu IDE para acceder a las propiedades.
 
+	public Medico getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getHora() {
+		return hora;
+	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
+	public EstadoTurno getEstado() {
+		return estado;
+	}
+
+	public void setEstado(EstadoTurno estado) {
+		this.estado = estado;
+	}
+
+   
+    
     // Método toString
     @Override
     public String toString() {
@@ -69,6 +119,7 @@ public class Turno implements Serializable{
                 ", estado=" + estado +
                 '}';
     }
+
 
     // Otros métodos relacionados con el turno (opcional)
 }

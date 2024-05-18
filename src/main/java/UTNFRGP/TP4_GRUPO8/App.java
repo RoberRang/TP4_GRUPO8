@@ -6,10 +6,13 @@ import java.util.List;
 import dao.daoEspecialidad;
 import dao.daoMedico;
 import dao.daoPaciente;
+import dao.daoTurno;
 import dao.daoUsuario;
 import entidad.Especialidad;
+import entidad.EstadoTurno;
 import entidad.Medico;
 import entidad.Paciente;
+import entidad.Turno;
 import entidad.Usuario;
 
 /**
@@ -79,6 +82,30 @@ public class App
     	    pac1.setTelefono("215585_"+i);
     	    
     	    daopac.Add(pac1);
+    	}
+    	
+    	daoTurno daotur = new daoTurno();
+    	List<Medico> medicos = daomed.ReadAll();
+    	List<Paciente> pacientes = daopac.ReadAll();
+
+    	
+    	for (int i = 1; i < 13; i++) {
+    		
+    	    Turno turn1 = new Turno();
+    	    
+    	    turn1.setEstado(EstadoTurno.PENDIENTE);
+    	    turn1.setFecha("1988-05-01");
+    	    turn1.setHora("20:0"+i);
+    	    turn1.setObservacion("Descompuesto"+i);
+    	    
+    	    Medico medico = medicos.get(i-1);
+    	    Paciente paciente = pacientes.get(i-1);
+    	    
+    	    turn1.setMedico(medico);
+    	    turn1.setPaciente(paciente);
+    	    
+    	    
+    	    daotur.Add(turn1);
     	}
     
 				
