@@ -3,6 +3,7 @@ package entidad;
 import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.junit.Test;
 
@@ -46,7 +47,7 @@ public class MedicoTest {
     @Test
     public void testGetFNac() {
         medico = new Medico();
-        LocalDate ld = new LocalDateStringConverter().fromString("1980/01/02");
+        LocalDate ld = LocalDate.parse("02-01-1980", DateTimeFormatter.ofPattern("dd-MM-yyyy"));        
         medico.setFNac(ld);
         assertEquals(ld, medico.getFNac());
     }
