@@ -5,8 +5,10 @@ import java.util.List;
 
 import dao.daoEspecialidad;
 import dao.daoMedico;
+import dao.daoPaciente;
 import entidad.Especialidad;
 import entidad.Medico;
+import entidad.Paciente;
 
 /**
  * Hello world!
@@ -46,10 +48,25 @@ public class App
     	    
     	    daomed.Add(med1);
     	}
-
+    	
+    	daoPaciente daopac = new daoPaciente();
+	    	
+    	for (int i = 1; i < 13; i++) {
+    	    Paciente pac1 = new Paciente();
+    	    
+    	    pac1.setNombre("Pedrito_" + i);
+    	    pac1.setApellido("Ramirez_"+i);
+    	    pac1.setCorreoElectronico("paciente_90@gmail.com_"+i);
+    	    pac1.setDireccion("La plata 403_"+i);
+    	    pac1.setDni("2588632_"+i);
+    	    pac1.setFechaNacimiento("1988-05-01");
+    	    pac1.setLocalidad("CABA_"+i);
+    	    pac1.setProvincia("Buenos Aires_"+i);
+    	    pac1.setTelefono("215585_"+i);
+    	    
+    	    daopac.Add(pac1);
+    	}
     
-        
-        
 				
     }
 }
