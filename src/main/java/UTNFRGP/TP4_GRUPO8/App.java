@@ -6,9 +6,11 @@ import java.util.List;
 import dao.daoEspecialidad;
 import dao.daoMedico;
 import dao.daoPaciente;
+import dao.daoUsuario;
 import entidad.Especialidad;
 import entidad.Medico;
 import entidad.Paciente;
+import entidad.Usuario;
 
 /**
  * Hello world!
@@ -19,18 +21,27 @@ public class App
     public static void main( String[] args )
     {
     	daoEspecialidad daoesp = new daoEspecialidad();
-
-    	
     	for (int i = 1; i < 13; i++) {
     	    Especialidad espe = new Especialidad();
     	    espe.setNombre("Gastroenterologia_" + i);
     	    daoesp.Add(espe);
     	}
+    	
+    	daoUsuario daouser = new daoUsuario();
+    	for (int i = 1; i < 13; i++) {
+    	    Usuario user = new Usuario();
+    	    user.setNombre("Dr.Jaime_" + i);
+    	    user.setPassword("inicio01."+i);
+    	    daouser.Add(user);
+    	}
+    	
 
     	daoMedico daomed = new daoMedico();
     	List<Especialidad> especialidades = daoesp.ReadAll();
+    	List<Usuario> usuarios = daouser.ReadAll();
 
     	for (int i = 1; i < 13; i++) {
+    		
     	    Medico med1 = new Medico();
     	    med1.setNombre("Medico_Nom_" + i);
     	    med1.setApellido("Medico_Ape_" + i);
@@ -41,17 +52,20 @@ public class App
     	    med1.setCorreo("medico_" + i + "_@intramed.net");
     	    med1.setTeléfono("telefono_" + i);
     	    
-    	    // Asignacion de una especialidad al médico 
-    	    // asignamos una especialidad a cada médico de forma secuencial
+    	    // Asignacion de una especialidad al médico y usuario 
+    	    // asignamos una especialidad y el usuario a cada médico de forma secuencial
     	    Especialidad especialidad = especialidades.get(i - 1); // con i-1 porque el indice arranca en 0
+    	    Usuario usuario = usuarios.get(i-1);
+    	    
+    	    med1.setUsuario(usuario);
     	    med1.setEspecialidad(especialidad);
     	    
     	    daomed.Add(med1);
     	}
     	
     	daoPaciente daopac = new daoPaciente();
-	    	
     	for (int i = 1; i < 13; i++) {
+    		
     	    Paciente pac1 = new Paciente();
     	    
     	    pac1.setNombre("Pedrito_" + i);
