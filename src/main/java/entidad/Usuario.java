@@ -28,7 +28,7 @@ public class Usuario implements Serializable {
 
     
     //Agregamos Medico
-    @OneToOne(mappedBy="Usuario", fetch= FetchType.EAGER)
+    @OneToOne(mappedBy="usuario", fetch= FetchType.EAGER)
     private Medico medico;
     
     // Constructor en blanco
