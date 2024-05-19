@@ -189,5 +189,18 @@ public class App
         //Baja
         daotur.Delete(turn1);
         
+     // mostrar los datos bidireccionados de un medico con su usuario
+        
+        for (Medico medico1 : medicos) {
+            System.out.println(medico1);
+            System.out.println(medico1.getUsuario());               
+            int length = medico1.toString().length();
+        
+            for (int i = 0; i < length; i++) {
+                System.out.print("-");
+            }
+            System.out.println(); 
+        }
+        
     }
 }
