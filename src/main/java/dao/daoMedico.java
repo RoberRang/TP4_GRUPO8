@@ -62,5 +62,62 @@ public class daoMedico implements IDaoMedico {
 		
 		ch.cerrarConexion();
 	}
-
+	
+	//Metodos tp4
+	public List<Medico> mostrarMedicosOrdenadosPorLegajoDesc() {
+	    ConfigHibernate ch = new ConfigHibernate();
+	    Session session = ch.abrirConexion();    
+	
+	    @SuppressWarnings({ "unchecked", "unused" })
+		List<Medico> listaMedicos = (List<Medico>) session.createQuery("FROM Medico m ORDER BY m.legajo DESC").list();	    
+	    
+	    ch.cerrarConexion();
+	    return listaMedicos;
+	}
+	
+	public List<Object[]> mostrarMedicosOrdenadosPorLegajoAsc() {
+	    ConfigHibernate ch = new ConfigHibernate();
+	    Session session = ch.abrirConexion();
+	    
+	    
+	    session.beginTransaction();
+	    @SuppressWarnings("unchecked")
+	    List<Object[]> listaMedicos = session.createQuery("SELECT m.legajo, m.nombre, m.apellido FROM Medico m ORDER BY m.legajo ASC").list();
+	    
+	   
+	    ch.cerrarConexion();
+	    
+	    return listaMedicos;
+	}
+	
+	 public List<Integer> obtenerLegajosMedicos() {
+	        ConfigHibernate ch = new ConfigHibernate();
+	        Session session = ch.abrirConexion();
+	        
+	        session.beginTransaction();
+	        
+	       
+	        @SuppressWarnings("unchecked")
+			List<Integer> listaLegajos = (List<Integer>) session.createQuery("SELECT m.legajo FROM Medico m").list();
+	        
+	        session.getTransaction().commit();
+	        ch.cerrarConexion();
+	        
+	        return listaLegajos;
+	    }
+	 
+	public int obtenerMaxLegajoMedico() {
+	        ConfigHibernate ch = new ConfigHibernate();
+	        Session session = ch.abrirConexion();
+	        
+	        session.beginTransaction();	        
+	        
+	        Integer maxLegajo = (Integer) session.createQuery("SELECT MAX(m.legajo) FROM Medico m").uniqueResult();
+	        
+	        session.getTransaction().commit();
+	        ch.cerrarConexion();
+	        
+	        return maxLegajo != null ? maxLegajo : 0; // Devuelve 0 si no se encuentra ningún médico
+	    }
+	
 }
