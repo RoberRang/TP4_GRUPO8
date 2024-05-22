@@ -64,7 +64,7 @@ public class daoTurno {
 		ch.cerrarConexion();
 	}
 	
-	public Turno mostrarTurnoMedicoPorLegajoYFecha(int legajoMedico, LocalDate fecha) {
+	/*public Turno mostrarTurnoMedicoPorLegajoYFecha(int legajoMedico, LocalDate fecha) {
         ConfigHibernate ch = new ConfigHibernate();
         Session session = ch.abrirConexion();
         
@@ -83,7 +83,7 @@ public class daoTurno {
         ch.cerrarConexion();
         
         return turno;
-    }
+    }*/
 
 	//punto6
 	public double obtenerPorcentajeTurnos(EstadoTurno estado, String fechaInicio, String fechaFin) {

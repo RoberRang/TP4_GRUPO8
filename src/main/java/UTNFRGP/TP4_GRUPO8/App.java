@@ -202,5 +202,77 @@ public class App
             System.out.println(); 
         }
         
+      //Alta, Modificacion y borrado de turno
+
+        daoMedico daomed1 = new daoMedico();
+        List<Medico> medicos1 = daomed1.ReadAll();
+        daoTurno daotur1 = new daoTurno();
+        daoPaciente daopac1 = new daoPaciente();
+        List<Paciente> pacientes1 = daopac1.ReadAll();
+        
+        //Agrego turnos 01-01-2025 para prueba
+        Turno turn2 = new Turno();
+        turn2.setEstado(EstadoTurno.PENDIENTE);
+        turn2.setFecha("2025-01-01");
+        turn2.setHora("20:00");
+        turn2.setObservacion("N/A");
+
+        Medico medico1 = medicos1.get(2);
+        Paciente paciente1 = pacientes1.get(2);
+
+        turn2.setMedico(medico1);
+        turn2.setPaciente(paciente1);
+
+        daotur1.Add(turn2);
+        
+        Turno turn3 = new Turno();
+        turn3.setEstado(EstadoTurno.PENDIENTE);
+        turn3.setFecha("2025-01-01");
+        turn3.setHora("15:00");
+        turn3.setObservacion("N/A");
+        turn3.setMedico(medico1);
+        turn3.setPaciente(paciente1);
+        
+        daotur1.Add(turn3);
+        
+        Turno turn4 = new Turno();
+        turn4.setEstado(EstadoTurno.PENDIENTE);
+        turn4.setFecha("2025-01-01");
+        turn4.setHora("18:00");
+        turn4.setObservacion("N/A");
+        turn4.setMedico(medico1);
+        turn4.setPaciente(paciente1);
+        
+        daotur1.Add(turn4);
+         
+        Turno turn5 = new Turno();
+        turn5.setEstado(EstadoTurno.PRESENTE);
+        turn5.setFecha("2025-01-01");
+        turn5.setHora("18:00");
+        turn5.setObservacion("N/A");
+        turn5.setMedico(medico1);
+        turn5.setPaciente(paciente1);
+        
+        daotur1.Add(turn5);
+        
+        Turno turn6 = new Turno();
+        turn6.setEstado(EstadoTurno.PRESENTE);
+        turn6.setFecha("2025-01-01");
+        turn6.setHora("18:00");
+        turn6.setObservacion("N/A");
+        turn6.setMedico(medico1);
+        turn6.setPaciente(paciente1);
+        
+        daotur1.Add(turn6);
+        
+        Turno turn7 = new Turno();
+        turn7.setEstado(EstadoTurno.AUSENTE);
+        turn7.setFecha("2025-01-01");
+        turn7.setHora("18:00");
+        turn7.setObservacion("N/A");
+        turn7.setMedico(medico1);
+        turn7.setPaciente(paciente1);
+        
+        daotur1.Add(turn7);
     }
 }

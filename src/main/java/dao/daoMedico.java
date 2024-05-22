@@ -120,4 +120,21 @@ public class daoMedico implements IDaoMedico {
 	        return maxLegajo != null ? maxLegajo : 0; // Devuelve 0 si no se encuentra ningún médico
 	    }
 	
+	//PUNTO 3
+	
+	public List<Object[]> MostrarListadoTurnosPorLegajoYFecha(int legajoMedico, String fecha) {
+		ConfigHibernate ch = new ConfigHibernate();
+	    Session session = ch.abrirConexion();
+	    
+	    List<Object[]> listaTurnos = (List<Object[]>)session.createQuery("SELECT m.legajo, lt.fecha, lt.estado FROM Medico as m INNER JOIN m.listaTurnos lt " +
+                "WHERE m.legajo = :legajoMedico " +
+                "AND lt.fecha = :fecha")
+	    		.setParameter("legajoMedico", legajoMedico)
+                .setParameter("fecha", fecha) 
+                .list();  	
+	    
+	    ch.cerrarConexion();
+		
+		return listaTurnos;
+	}
 }

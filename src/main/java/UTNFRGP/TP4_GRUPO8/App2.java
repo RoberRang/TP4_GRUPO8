@@ -16,7 +16,7 @@ public class App2 {
 	 */
 	public static void main(String[] args) {
 	    
-		  // 1- Mostrar los médicos ordenados por legajo de mayor a menor. Los campos que se deben mostrar son todos. HQL SELECT ALL.
+		 // 1- Mostrar los médicos ordenados por legajo de mayor a menor. Los campos que se deben mostrar son todos. HQL SELECT ALL.
 	      
 		daoMedico medicoDao = new daoMedico();
 		
@@ -52,7 +52,7 @@ public class App2 {
 		
 		daoTurno turnoDao = new daoTurno();
         
-        int legajoMedico = 1234;
+        /*int legajoMedico = 1234;
         LocalDate fecha = LocalDate.of(2025, 1, 1);
         
         
@@ -63,6 +63,23 @@ public class App2 {
             System.out.println(turno.toString());
         } else {
             System.out.println("No se encontró ningún turno para el médico con legajo " + legajoMedico + " en la fecha " + fecha);
+        }*/
+		
+		int legajoMedico = 3;
+        String fecha = "2025-01-01";
+        
+        List<Object[]> listaTurnos = (List<Object[]>)medicoDao.MostrarListadoTurnosPorLegajoYFecha(legajoMedico, fecha);
+        
+        if (listaTurnos.isEmpty()) {
+        	System.out.println("No se encontró ningún turno para el médico con legajo " + legajoMedico + " en la fecha " + fecha);
+        } else {
+        
+        	for (Object[] objeto : listaTurnos) {
+        		Integer legajo = (Integer)objeto[0];
+        		String date = objeto[1].toString();
+        		String estado = objeto[2].toString();
+        		System.out.println("Legajo: " + legajo + ", Fecha: " + date + ", Estado: " + estado + ".");
+        	}
         }
         
 		
@@ -87,7 +104,7 @@ public class App2 {
 		//daoTurno turnoDao = new daoTurno();
 	        
 	        String fechaInicio = "1988-05-01";
-	        String fechaFin = "2024-03-01";
+	        String fechaFin = "2025-01-01";
 	        
 	        EstadoTurno ausente = EstadoTurno.AUSENTE;
 	        EstadoTurno presente = EstadoTurno.PRESENTE;

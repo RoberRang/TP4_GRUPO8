@@ -63,8 +63,8 @@ public class Medico implements Serializable {
 	private Especialidad especialidad;
 	
 	//Agregamos listado de turnos
-	@OneToMany(cascade = {CascadeType.ALL})
-	@JoinColumn (name="Id_Turno")
+	@OneToMany(mappedBy = "medico", cascade = {CascadeType.ALL})
+	//@JoinColumn (name="Id_Turno")
 	List<Turno> listaTurnos = new ArrayList<Turno>();
 	
 	public Medico() {
