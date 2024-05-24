@@ -119,25 +119,5 @@ public class App2 {
 	       /* System.out.println("Porcentaje de turnos pendientes: " + porcentajePendientes + "%");*/
 	}
 
-	//Otra forma punto 4 
-	
-	/*	4) Mostrar todos los legajos de los médicos 
-		El campo que se debe mostrar es legajo. Realizarlo como se explica en el video HQL 
-		SELECT ONE COLUMN
-
-	 * */
-		public static void ReadPunto4() {
-		ConfigHibernate hb = new ConfigHibernate();
-		Session session= hb.abrirConexion();
-		
-		List<Integer>listaLegajoMedicos = (List<Integer>)session.createQuery("SELECT md.legajo FROM Medico md").list();
-			
-		for (Integer legajo: listaLegajoMedicos) {
-
-			System.out.println("Legajo medico: "+legajo);
-		}
-		
-		hb.cerrarConexion();
-	}
 
 }
