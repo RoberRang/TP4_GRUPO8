@@ -26,3 +26,4 @@ replay_pid*
 # .gitignore
 ~/pom.xml
 ~/hibernate.cfg.xml
+target/classes/hibernate.cfg.xml
