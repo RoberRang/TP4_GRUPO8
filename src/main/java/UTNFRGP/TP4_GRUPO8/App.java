@@ -3,6 +3,9 @@ package UTNFRGP.TP4_GRUPO8;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import dao.daoEspecialidad;
 import dao.daoMedico;
 import dao.daoPaciente;
@@ -14,6 +17,7 @@ import entidad.Medico;
 import entidad.Paciente;
 import entidad.Turno;
 import entidad.Usuario;
+import resources.AppConfig;
 
 /**
  * Hello world!
@@ -23,29 +27,29 @@ public class App
 {
     public static void main( String[] args )
     {
-    	daoEspecialidad daoesp = new daoEspecialidad();
+        ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
+    	daoEspecialidad daoesp = (daoEspecialidad) appContext.getBean("nuevoDaoEspecialidad"); // new daoEspecialidad();
     	for (int i = 1; i < 13; i++) {
-    	    Especialidad espe = new Especialidad();
+    	    Especialidad espe = (Especialidad) appContext.getBean("nuevaEspecialidad"); // new Especialidad();
     	    espe.setNombre("Gastroenterologia_" + i);
     	    daoesp.Add(espe);
     	}
     	
-    	daoUsuario daouser = new daoUsuario();
+    	daoUsuario daouser = (daoUsuario) appContext.getBean("nuevoDaoUsuario"); // new daoUsuario();
     	for (int i = 1; i < 13; i++) {
-    	    Usuario user = new Usuario();
+    	    Usuario user = (Usuario) appContext.getBean("nuevoUsuario"); // new Usuario();
     	    user.setNombre("Dr.Jaime_" + i);
     	    user.setPassword("inicio01."+i);
     	    daouser.Add(user);
-    	}
-    	
-
-    	daoMedico daomed = new daoMedico();
+    	}    	
+        
+    	daoMedico daomed = (daoMedico) appContext.getBean("nuevoDaoMedico"); // new daoMedico();
     	List<Especialidad> especialidades = daoesp.ReadAll();
     	List<Usuario> usuarios = daouser.ReadAll();
 
     	for (int i = 1; i < 13; i++) {
     		
-    	    Medico med1 = new Medico();
+    	    Medico med1 = (Medico) appContext.getBean("nuevoMedico"); // new Medico();
     	    med1.setNombre("Medico_Nom_" + i);
     	    med1.setApellido("Medico_Ape_" + i);
     	    med1.setSexo('M');
@@ -66,10 +70,10 @@ public class App
     	    daomed.Add(med1);
     	}
     	
-    	daoPaciente daopac = new daoPaciente();
+    	daoPaciente daopac = (daoPaciente) appContext.getBean("nuevoDaoPaciente"); // new daoPaciente();
     	for (int i = 1; i < 13; i++) {
     		
-    	    Paciente pac1 = new Paciente();
+    	    Paciente pac1 = (Paciente) appContext.getBean("nuevoPaciente"); // new Paciente();
     	    
     	    pac1.setNombre("Pedrito_" + i);
     	    pac1.setApellido("Ramirez_"+i);
@@ -86,14 +90,14 @@ public class App
     	
     	//Alta de turnos 
     	
-    	daoTurno daotur = new daoTurno();
+    	daoTurno daotur = (daoTurno) appContext.getBean("nuevoDaoTurno"); // new daoTurno();
     	List<Medico> medicos = daomed.ReadAll();
     	List<Paciente> pacientes = daopac.ReadAll();
 
     	
     	for (int i = 1; i < 13; i++) {
     		
-    	    Turno turn1 = new Turno();
+    	    Turno turn1 = (Turno) appContext.getBean("nuevoTurno"); // new Turno();
     	    
     	    turn1.setEstado(EstadoTurno.PENDIENTE);
     	    turn1.setFecha("1988-05-01");
@@ -115,7 +119,7 @@ public class App
         
         //Alta, modificacion y borrado de paciente
         
-        Paciente pac2 = new Paciente();
+        Paciente pac2 = (Paciente) appContext.getBean("nuevoPaciente");// new Paciente();
 	    
         pac2.setNombre("PRUEBA_ABML");
         pac2.setApellido("Ramirez");
@@ -132,7 +136,7 @@ public class App
 	    daopac.Delete(pac2);
 	    
 	    
-	      Paciente pac3 = new Paciente();
+	      Paciente pac3 = (Paciente) appContext.getBean("nuevoPaciente"); //new Paciente();
 		    
 	        pac3.setNombre("PRUEBA_ABML2");
 	        pac3.setApellido("Fernandez");
@@ -164,7 +168,7 @@ public class App
         
       //Alta, Modificacion y borrado de turno
         
-        Turno turn1 = new Turno();
+        Turno turn1 = (Turno) appContext.getBean("nuevoTurno"); //new Turno();
 	   
 	    turn1.setEstado(EstadoTurno.PENDIENTE);
 	    turn1.setFecha("1988-05-18");
@@ -204,14 +208,14 @@ public class App
         
       //Alta, Modificacion y borrado de turno
 
-        daoMedico daomed1 = new daoMedico();
+        daoMedico daomed1 = (daoMedico) appContext.getBean("nuevoDaoMedico"); // new daoMedico();
         List<Medico> medicos1 = daomed1.ReadAll();
-        daoTurno daotur1 = new daoTurno();
-        daoPaciente daopac1 = new daoPaciente();
+        daoTurno daotur1 = (daoTurno) appContext.getBean("nuevoDaoTurno"); //new daoTurno();
+        daoPaciente daopac1 =  (daoPaciente) appContext.getBean("nuevoDaoPaciente"); // new daoPaciente();
         List<Paciente> pacientes1 = daopac1.ReadAll();
         
         //Agrego turnos 01-01-2025 para prueba
-        Turno turn2 = new Turno();
+        Turno turn2 = (Turno) appContext.getBean("nuevoTurno"); //new Turno();
         turn2.setEstado(EstadoTurno.PENDIENTE);
         turn2.setFecha("2025-01-01");
         turn2.setHora("20:00");
@@ -225,7 +229,7 @@ public class App
 
         daotur1.Add(turn2);
         
-        Turno turn3 = new Turno();
+        Turno turn3 = (Turno) appContext.getBean("nuevoTurno"); // new Turno();
         turn3.setEstado(EstadoTurno.PENDIENTE);
         turn3.setFecha("2025-01-01");
         turn3.setHora("15:00");
@@ -235,7 +239,7 @@ public class App
         
         daotur1.Add(turn3);
         
-        Turno turn4 = new Turno();
+        Turno turn4 = (Turno) appContext.getBean("nuevoTurno"); // new Turno();
         turn4.setEstado(EstadoTurno.PENDIENTE);
         turn4.setFecha("2025-01-01");
         turn4.setHora("18:00");
@@ -245,7 +249,7 @@ public class App
         
         daotur1.Add(turn4);
          
-        Turno turn5 = new Turno();
+        Turno turn5 = (Turno) appContext.getBean("nuevoTurno"); //new Turno();
         turn5.setEstado(EstadoTurno.PRESENTE);
         turn5.setFecha("2025-01-01");
         turn5.setHora("18:00");
@@ -255,7 +259,7 @@ public class App
         
         daotur1.Add(turn5);
         
-        Turno turn6 = new Turno();
+        Turno turn6 = (Turno) appContext.getBean("nuevoTurno"); //new Turno();
         turn6.setEstado(EstadoTurno.PRESENTE);
         turn6.setFecha("2025-01-01");
         turn6.setHora("18:00");
@@ -265,7 +269,7 @@ public class App
         
         daotur1.Add(turn6);
         
-        Turno turn7 = new Turno();
+        Turno turn7 = (Turno) appContext.getBean("nuevoTurno"); //new Turno();
         turn7.setEstado(EstadoTurno.AUSENTE);
         turn7.setFecha("2025-01-01");
         turn7.setHora("18:00");

@@ -1,6 +1,10 @@
 package UTNFRGP.TP4_GRUPO8;
 
 import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import java.time.LocalDate;
 
 import dao.daoMedico;
@@ -8,6 +12,7 @@ import dao.daoTurno;
 import entidad.EstadoTurno;
 import entidad.Medico;
 import entidad.Turno;
+import resources.AppConfig;
 
 public class App2 {
 
@@ -19,10 +24,10 @@ public class App2 {
 		// 1- Mostrar los médicos ordenados por legajo de mayor a menor. Los campos que
 		// se deben mostrar son todos. HQL SELECT ALL.
 
-		daoMedico medicoDao = new daoMedico();
-		
-
-		List<Medico> medicos = medicoDao.mostrarMedicosOrdenadosPorLegajoDesc();
+		//
+		ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
+		daoMedico medicoDao = (daoMedico)appContext.getBean("nuevoDaoMedico");
+		List<Medico> medicos =  medicoDao.mostrarMedicosOrdenadosPorLegajoDesc();
 
 		for (Medico medico : medicos) {
 			int legajo = (int) medico.getLegajo();
@@ -106,7 +111,8 @@ public class App2 {
 		int maxLegajo = medicoDao.obtenerMaxLegajoMedico();
 		System.out.println("Máximo número de legajo entre los médicos: " + maxLegajo);
 
-		daoTurno turnoDao = new daoTurno();		
+		//daoTurno turnoDao = new daoTurno();		
+		daoTurno turnoDao = (daoTurno)appContext.getBean("nuevDaoTurno");
 
 		String fechaInicio = "1988-05-01";
 		String fechaFin = "2025-01-01";
@@ -122,6 +128,7 @@ public class App2 {
 		System.out.println("Porcentaje de turnos ausentes: " + porcentajeAusentes + "%");
 		System.out.println("Porcentaje de turnos presentes: " + porcentajePresentes + "%");
 		System.out.println("Porcentaje de turnos Pendidntes:" + porcentajePendientes + "%");
+		//((ConfigurableApplicationContext)(appContext)).close();
 
 	}
 
@@ -149,5 +156,5 @@ public class App2 {
 	 * hb.cerrarConexion();
 	 * }
 	 */
-
+	
 }
