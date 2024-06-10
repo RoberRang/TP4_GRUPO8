@@ -58,6 +58,7 @@ public class App
     	    med1.setLocalidad("Localidad_" + i);
     	    med1.setCorreo("medico_" + i + "_@intramed.net");
     	    med1.setTeléfono("telefono_" + i);
+            med1.setActivo(true);
     	    
     	    // Asignacion de una especialidad al médico y usuario 
     	    // asignamos una especialidad y el usuario a cada médico de forma secuencial
@@ -84,7 +85,7 @@ public class App
     	    pac1.setLocalidad("CABA_"+i);
     	    pac1.setProvincia("Buenos Aires_"+i);
     	    pac1.setTelefono("215585_"+i);
-    	    
+    	    pac1.setActivo(true);
     	    daopac.Add(pac1);
     	}
     	
@@ -130,6 +131,7 @@ public class App
         pac2.setLocalidad("CABA");
         pac2.setProvincia("Buenos Aires");
         pac2.setTelefono("215585");
+        pac2.setActivo(true);
 	    
 	    daopac.Add(pac2);
 	    
@@ -153,6 +155,7 @@ public class App
 		    pac3.setDni("11111111");
 		    pac3.setCorreoElectronico("CORREOMOFICADO POR ABML");
 		    pac3.setProvincia("MENDOZA");
+            pac3.setActivo(false);
 		    daopac.Update(pac3);
 	    
 	    // Listado de turnos con sus relaciones 

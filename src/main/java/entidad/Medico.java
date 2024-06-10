@@ -18,57 +18,59 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Medicos")
+@Table(name = "Medicos")
 public class Medico implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@Column(name="Legajo")
+	@Column(name = "Legajo")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int legajo;
-	
-	@Column(name="Nombre")
+
+	@Column(name = "Nombre")
 	private String nombre;
-	
-	@Column(name="Apellido")
+
+	@Column(name = "Apellido")
 	private String apellido;
-	
-	@Column(name="Sexo")
+
+	@Column(name = "Sexo")
 	private char sexo;
-	
-	@Column(name="FNac")
+
+	@Column(name = "FNac")
 	private LocalDate fNac;
-	
-	@Column(name="Direccion")
+
+	@Column(name = "Direccion")
 	private String direccion;
-	
-	@Column(name="Localidad")
+
+	@Column(name = "Localidad")
 	private String localidad;
-	
-	@Column(name="Correo")
+
+	@Column(name = "Correo")
 	private String correo;
-	
-	@Column(name="Telefono")
-	private String telefono; 
-	
-	//Agregamos atributo del tipo Usuario
-	@OneToOne(cascade = {CascadeType.ALL})
-	@JoinColumn (name="Id_Usuario")
+
+	@Column(name = "Telefono")
+	private String telefono;
+
+	// Agregamos atributo del tipo Usuario
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "Id_Usuario")
 	private Usuario usuario;
-	
-	//Agregamos atributo del tipo Especialidad
-	@ManyToOne(cascade = {CascadeType.ALL})
-	@JoinColumn (name="Id_Especialidad")
+
+	// Agregamos atributo del tipo Especialidad
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "Id_Especialidad")
 	private Especialidad especialidad;
-	
-	//Agregamos listado de turnos
-	@OneToMany(mappedBy = "medico", cascade = {CascadeType.ALL})
-	//@JoinColumn (name="Id_Turno")
+
+	// Agregamos listado de turnos
+	@OneToMany(mappedBy = "medico", cascade = { CascadeType.ALL })
+	// @JoinColumn (name="Id_Turno")
 	List<Turno> listaTurnos = new ArrayList<Turno>();
-	
+	@Column(name = "Activo")
+	private boolean activo;
+
 	public Medico() {
-		
+
 	}
 
 	public int getLegajo() {
@@ -142,8 +144,8 @@ public class Medico implements Serializable {
 	public void setTeléfono(String telefono) {
 		this.telefono = telefono;
 	}
-	
-	//Getters y Setters para usuario
+
+	// Getters y Setters para usuario
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
@@ -152,7 +154,7 @@ public class Medico implements Serializable {
 		this.usuario = usuario;
 	}
 
-	//Getters y Setters para especialidad
+	// Getters y Setters para especialidad
 	public Especialidad getEspecialidad() {
 		return this.especialidad;
 	}
@@ -161,7 +163,7 @@ public class Medico implements Serializable {
 		this.especialidad = especialidad;
 	}
 
-	//Getters y Setters para lista turnos
+	// Getters y Setters para lista turnos
 	public List<Turno> getListaTurnos() {
 		return listaTurnos;
 	}
@@ -170,12 +172,19 @@ public class Medico implements Serializable {
 		this.listaTurnos = listaTurnos;
 	}
 
+	public boolean getActivo() {
+		return this.activo;
+	}
+
+	public void setActivo(boolean act) {
+		this.activo = act;
+	}
+
 	@Override
 	public String toString() {
 		return "Medico [Legajo=" + legajo + ", Nombre=" + nombre + ", Apellido=" + apellido + ", Sexo=" + sexo
 				+ ", FNac=" + fNac + ", Dirección=" + direccion + ", Localidad=" + localidad + ", Correo=" + correo
-				+ ", Teléfono=" + telefono + "]";
+				+ ", Teléfono=" + telefono + ", Activo: " + activo + "]";
 	}
-
 
 }

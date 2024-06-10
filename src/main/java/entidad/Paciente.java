@@ -10,11 +10,11 @@ import javax.persistence.*;
 @Table(name = "Pacientes")
 public class Paciente implements Serializable {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -44,12 +44,14 @@ public class Paciente implements Serializable {
 
     @Column(name = "CorreoElectronico")
     private String correoElectronico;
-    
-    
-  //Agregamos listado de turnos
-  	@OneToMany(cascade = {CascadeType.ALL})
-  	@JoinColumn (name="id_Turno")
-  	List<Turno> listaTurnos = new ArrayList<Turno>();
+
+    @Column(name = "Activo")
+    private boolean activo;
+
+    // Agregamos listado de turnos
+    @OneToMany(cascade = { CascadeType.ALL })
+    @JoinColumn(name = "id_Turno")
+    List<Turno> listaTurnos = new ArrayList<Turno>();
 
     // Constructor en blanco
     public Paciente() {
@@ -58,8 +60,8 @@ public class Paciente implements Serializable {
 
     // Constructor con todos los atributos
     public Paciente(String nombre, String apellido, String dni, String telefono,
-                    String direccion, String localidad, String provincia,
-                    String fechaNacimiento, String correoElectronico) {
+            String direccion, String localidad, String provincia,
+            String fechaNacimiento, String correoElectronico) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -72,79 +74,88 @@ public class Paciente implements Serializable {
     }
 
     // Getters y Setters
-    // Puedes generar automáticamente estos métodos en tu IDE para acceder a las propiedades.
-    
+    // Puedes generar automáticamente estos métodos en tu IDE para acceder a las
+    // propiedades.
+
     public String getNombre() {
-		return nombre;
-	}
+        return nombre;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public String getApellido() {
-		return apellido;
-	}
+    public String getApellido() {
+        return apellido;
+    }
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
-	public String getDni() {
-		return dni;
-	}
+    public String getDni() {
+        return dni;
+    }
 
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
 
-	public String getTelefono() {
-		return telefono;
-	}
+    public String getTelefono() {
+        return telefono;
+    }
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
 
-	public String getDireccion() {
-		return direccion;
-	}
+    public String getDireccion() {
+        return direccion;
+    }
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
-	public String getLocalidad() {
-		return localidad;
-	}
+    public String getLocalidad() {
+        return localidad;
+    }
 
-	public void setLocalidad(String localidad) {
-		this.localidad = localidad;
-	}
+    public void setLocalidad(String localidad) {
+        this.localidad = localidad;
+    }
 
-	public String getProvincia() {
-		return provincia;
-	}
+    public String getProvincia() {
+        return provincia;
+    }
 
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
 
-	public String getFechaNacimiento() {
-		return fechaNacimiento;
-	}
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
 
-	public void setFechaNacimiento(String fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
 
-	public String getCorreoElectronico() {
-		return correoElectronico;
-	}
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
 
-	public void setCorreoElectronico(String correoElectronico) {
-		this.correoElectronico = correoElectronico;
-	}
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+
+    public boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean actv) {
+        this.activo = actv;
+    }
 
     // Método toString
     @Override
@@ -163,7 +174,5 @@ public class Paciente implements Serializable {
                 '}';
     }
 
-	
     // Otros métodos relacionados con el paciente (opcional)
 }
-
