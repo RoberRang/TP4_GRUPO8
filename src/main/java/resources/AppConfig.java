@@ -22,6 +22,7 @@ import negocioImpl.UsuarioNegocio;
 @Configuration
 public class AppConfig {
 
+	// BEANS ENTIDADES
     @Bean
     public Medico beanMedico() {
         Medico medic = new Medico();
@@ -46,6 +47,8 @@ public class AppConfig {
         Turno turn = new Turno();
         return turn;
     }
+    
+    //BEANS DAO
     @Bean
     public daoMedico beanDaoMedico() {
         daoMedico daoMedic = new daoMedico();
@@ -71,26 +74,31 @@ public class AppConfig {
         daoUsuario daoUser = new daoUsuario();
         return daoUser;
     }
+    
+    // BEANS NEGOCIO
+    @Bean
+    public EspecialidadNegocio beanEspecialidadNegocio() {
+        EspecialidadNegocio especialidadNeg = new EspecialidadNegocio();
+        return especialidadNeg;
+    }
+    
     @Bean
     public MedicoNegocio beanMedicoNegocio() {
         MedicoNegocio medicoNeg = new MedicoNegocio();
         return medicoNeg;
     }
-    @Bean
-    public TurnoNegocio beanTurnoNegocio() {
-        TurnoNegocio turnoNeg = new TurnoNegocio();
-        return turnoNeg;
-    }
+    
     @Bean
     public PacienteNegocio beanPacienteNegocio() {
         PacienteNegocio pacienteNeg = new PacienteNegocio();
         return pacienteNeg;
     }
     @Bean
-    public EspecialidadNegocio beanEspecialidadNegocio() {
-        EspecialidadNegocio espcialidadNeg = new EspecialidadNegocio();
-        return espcialidadNeg;
+    public TurnoNegocio beanTurnoNegocio() {
+        TurnoNegocio turnoNeg = new TurnoNegocio();
+        return turnoNeg;
     }
+ 
     @Bean
     public UsuarioNegocio beanUsuarioNegocio() {
         UsuarioNegocio userNeg = new UsuarioNegocio();

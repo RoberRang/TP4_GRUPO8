@@ -17,6 +17,11 @@ import entidad.Medico;
 import entidad.Paciente;
 import entidad.Turno;
 import entidad.Usuario;
+import negocioImpl.EspecialidadNegocio;
+import negocioImpl.MedicoNegocio;
+import negocioImpl.PacienteNegocio;
+import negocioImpl.TurnoNegocio;
+import negocioImpl.UsuarioNegocio;
 import resources.AppConfig;
 
 /**
@@ -28,24 +33,32 @@ public class App
     public static void main( String[] args )
     {
         ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
-    	daoEspecialidad daoesp = (daoEspecialidad) appContext.getBean("beanDaoEspecialidad"); // new daoEspecialidad();
+        
+        //Inicializamos beans de negocio
+        EspecialidadNegocio especialidadNeg = (EspecialidadNegocio)appContext.getBean("beanEspecialidadNegocio");
+        UsuarioNegocio usuarioNeg = (UsuarioNegocio)appContext.getBean("beanUsuarioNegocio");
+        MedicoNegocio medicoNeg = (MedicoNegocio)appContext.getBean("beanMedicoNegocio");
+        PacienteNegocio pacienteNeg = (PacienteNegocio)appContext.getBean("beanPacienteNegocio");
+        TurnoNegocio turnoNeg = (TurnoNegocio)appContext.getBean("beanTurnoNegocio");
+        
+    	
     	for (int i = 1; i < 13; i++) {
     	    Especialidad espe = (Especialidad) appContext.getBean("beanEspecialidad"); // new Especialidad();
     	    espe.setNombre("Gastroenterologia_" + i);
-    	    daoesp.Add(espe);
+    	    especialidadNeg.Add(espe);
     	}
     	
-    	daoUsuario daouser = (daoUsuario) appContext.getBean("beanDaoUsuario"); // new daoUsuario();
+    	
     	for (int i = 1; i < 13; i++) {
     	    Usuario user = (Usuario) appContext.getBean("beanUsuario"); // new Usuario();
     	    user.setNombre("Dr.Jaime_" + i);
     	    user.setPassword("inicio01."+i);
-    	    daouser.Add(user);
+    	    usuarioNeg.Add(user);
     	}    	
         
-    	daoMedico daomed = (daoMedico) appContext.getBean("beanDaoMedico"); // new daoMedico();
-    	List<Especialidad> especialidades = daoesp.ReadAll();
-    	List<Usuario> usuarios = daouser.ReadAll();
+    	
+    	List<Especialidad> especialidades = especialidadNeg.ReadAll();
+    	List<Usuario> usuarios = usuarioNeg.ReadAll();
 
     	for (int i = 1; i < 13; i++) {
     		
@@ -68,10 +81,10 @@ public class App
     	    med1.setUsuario(usuario);
     	    med1.setEspecialidad(especialidad);
     	    
-    	    daomed.Add(med1);
+    	    medicoNeg.Add(med1);
     	}
     	
-    	daoPaciente daopac = (daoPaciente) appContext.getBean("beanDaoPaciente"); // new daoPaciente();
+    	
     	for (int i = 1; i < 13; i++) {
     		
     	    Paciente pac1 = (Paciente) appContext.getBean("beanPaciente"); // new Paciente();
@@ -86,14 +99,14 @@ public class App
     	    pac1.setProvincia("Buenos Aires_"+i);
     	    pac1.setTelefono("215585_"+i);
     	    pac1.setActivo(true);
-    	    daopac.Add(pac1);
+    	    pacienteNeg.Add(pac1);
     	}
     	
     	//Alta de turnos 
     
-    	daoTurno daotur = (daoTurno) appContext.getBean("beanDaoTurno"); // new daoTurno();
-    	List<Medico> medicos = daomed.ReadAll();
-    	List<Paciente> pacientes = daopac.ReadAll();
+    	
+    	List<Medico> medicos = medicoNeg.ReadAll();
+    	List<Paciente> pacientes = pacienteNeg.ReadAll();
 
     	
     	for (int i = 1; i < 13; i++) {
@@ -112,7 +125,7 @@ public class App
     	    turn1.setPaciente(paciente);
     	    
     	    
-    	    daotur.Add(turn1);
+    	    turnoNeg.Add(turn1);
     	}
     	
     	//ABML TP4 
@@ -133,9 +146,9 @@ public class App
         pac2.setTelefono("215585");
         pac2.setActivo(true);
 	    
-	    daopac.Add(pac2);
+        pacienteNeg.Add(pac2);
 	    
-	    daopac.Delete(pac2);
+        pacienteNeg.Delete(pac2);
 	    
 	    
 	      Paciente pac3 = (Paciente) appContext.getBean("beanPaciente"); //new Paciente();
@@ -150,17 +163,17 @@ public class App
 	        pac3.setProvincia("Buenos Aires");
 	        pac3.setTelefono("215585");
 		    
-		    daopac.Add(pac3);
+	        pacienteNeg.Add(pac3);
 		    
 		    pac3.setDni("11111111");
 		    pac3.setCorreoElectronico("CORREOMOFICADO POR ABML");
 		    pac3.setProvincia("MENDOZA");
             pac3.setActivo(false);
-		    daopac.Update(pac3);
+            pacienteNeg.Update(pac3);
 	    
 	    // Listado de turnos con sus relaciones 
 	  	
-    	List<Turno> todosLosTurnos = daotur.ReadAll();
+    	List<Turno> todosLosTurnos = turnoNeg.ReadAll();
         for (Turno turno : todosLosTurnos) {
             System.out.println("Id Turno: " + turno.getId() + ", Fecha: " + turno.getFecha() + ", Médico: " + turno.getMedico().getNombre());
             
@@ -184,17 +197,17 @@ public class App
 	    turn1.setMedico(medico);
 	    turn1.setPaciente(paciente);
 	    
-	    daotur.Add(turn1);
+	    turnoNeg.Add(turn1);
 	    
 	    //Modificacion
         turn1.setEstado(EstadoTurno.PRESENTE);
         turn1.setObservacion("Paciente atendido por control");
-        daotur.Update(turn1);
+        turnoNeg.Update(turn1);
         
         System.out.println(turn1.toString());
         
         //Baja
-        daotur.Delete(turn1);
+        turnoNeg.Delete(turn1);
         
      // mostrar los datos bidireccionados de un medico con su usuario
         
@@ -211,11 +224,11 @@ public class App
         
       //Alta, Modificacion y borrado de turno
 
-        daoMedico daomed1 = (daoMedico) appContext.getBean("beanDaoMedico"); // new daoMedico();
-        List<Medico> medicos1 = daomed1.ReadAll();
-        daoTurno daotur1 = (daoTurno) appContext.getBean("beanDaoTurno"); //new daoTurno();
-        daoPaciente daopac1 =  (daoPaciente) appContext.getBean("beanDaoPaciente"); // new daoPaciente();
-        List<Paciente> pacientes1 = daopac1.ReadAll();
+        MedicoNegocio medicoNeg1 = (MedicoNegocio)appContext.getBean("beanMedicoNegocio");
+        List<Medico> medicos1 = medicoNeg1.ReadAll();
+        TurnoNegocio turnoNeg1 = (TurnoNegocio)appContext.getBean("beanTurnoNegocio");
+        PacienteNegocio pacienteNeg1 = (PacienteNegocio)appContext.getBean("beanPacienteNegocio");
+        List<Paciente> pacientes1 = pacienteNeg1.ReadAll();
         
         //Agrego turnos 01-01-2025 para prueba
         Turno turn2 = (Turno) appContext.getBean("beanTurno"); //new Turno();
@@ -230,7 +243,7 @@ public class App
         turn2.setMedico(medico1);
         turn2.setPaciente(paciente1);
 
-        daotur1.Add(turn2);
+        turnoNeg1.Add(turn2);
         
         Turno turn3 = (Turno) appContext.getBean("beanTurno"); // new Turno();
         turn3.setEstado(EstadoTurno.PENDIENTE);
@@ -240,7 +253,7 @@ public class App
         turn3.setMedico(medico1);
         turn3.setPaciente(paciente1);
         
-        daotur1.Add(turn3);
+        turnoNeg1.Add(turn3);
         
         Turno turn4 = (Turno) appContext.getBean("beanTurno"); // new Turno();
         turn4.setEstado(EstadoTurno.PENDIENTE);
@@ -250,7 +263,7 @@ public class App
         turn4.setMedico(medico1);
         turn4.setPaciente(paciente1);
         
-        daotur1.Add(turn4);
+        turnoNeg1.Add(turn4);
          
         Turno turn5 = (Turno) appContext.getBean("beanTurno"); //new Turno();
         turn5.setEstado(EstadoTurno.PRESENTE);
@@ -260,7 +273,7 @@ public class App
         turn5.setMedico(medico1);
         turn5.setPaciente(paciente1);
         
-        daotur1.Add(turn5);
+        turnoNeg1.Add(turn5);
         
         Turno turn6 = (Turno) appContext.getBean("beanTurno"); //new Turno();
         turn6.setEstado(EstadoTurno.PRESENTE);
@@ -270,7 +283,7 @@ public class App
         turn6.setMedico(medico1);
         turn6.setPaciente(paciente1);
         
-        daotur1.Add(turn6);
+        turnoNeg1.Add(turn6);
         
         Turno turn7 = (Turno) appContext.getBean("beanTurno"); //new Turno();
         turn7.setEstado(EstadoTurno.AUSENTE);
@@ -280,6 +293,6 @@ public class App
         turn7.setMedico(medico1);
         turn7.setPaciente(paciente1);
         
-        daotur1.Add(turn7);
+        turnoNeg1.Add(turn7);
     }
 }
