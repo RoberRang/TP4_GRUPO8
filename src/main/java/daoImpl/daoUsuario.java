@@ -1,12 +1,13 @@
-package dao;
+package daoImpl;
 
 import java.util.List;
 
 import org.hibernate.Session;
 
-import Idao.IDaoUsuario;
+import dao.IDaoUsuario;
 import entidad.Paciente;
 import entidad.Usuario;
+import resources.ConfigHibernate;
 
 public class daoUsuario implements IDaoUsuario {
 	

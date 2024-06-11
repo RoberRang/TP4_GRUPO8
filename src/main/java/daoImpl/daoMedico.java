@@ -1,11 +1,12 @@
-package dao;
+package daoImpl;
 
 import java.util.List;
 
 import org.hibernate.Session;
 
-import Idao.IDaoMedico;
+import dao.IDaoMedico;
 import entidad.Medico;
+import resources.ConfigHibernate;
 
 public class daoMedico implements IDaoMedico {
 	

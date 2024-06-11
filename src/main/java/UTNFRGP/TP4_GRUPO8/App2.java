@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import daoImpl.daoMedico;
+import daoImpl.daoTurno;
+
 import java.time.LocalDate;
 
-import dao.daoMedico;
-import dao.daoTurno;
 import entidad.EstadoTurno;
 import entidad.Medico;
 import entidad.Turno;
@@ -112,7 +113,7 @@ public class App2 {
 		System.out.println("Máximo número de legajo entre los médicos: " + maxLegajo);
 
 		//daoTurno turnoDao = new daoTurno();		
-		daoTurno turnoDao = (daoTurno)appContext.getBean("nuevDaoTurno");
+		daoTurno turnoDao = (daoTurno)appContext.getBean("nuevoDaoTurno");
 
 		String fechaInicio = "1988-05-01";
 		String fechaFin = "2025-01-01";

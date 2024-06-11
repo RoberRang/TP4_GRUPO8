@@ -1,4 +1,4 @@
-package dao;
+package daoImpl;
 
 import java.util.List;
 import java.time.LocalDate;
@@ -7,6 +7,7 @@ import org.hibernate.Session;
 
 import entidad.EstadoTurno;
 import entidad.Turno;
+import resources.ConfigHibernate;
 
 public class daoTurno {
 

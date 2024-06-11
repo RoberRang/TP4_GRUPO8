@@ -1,4 +1,4 @@
-package Idao;
+package dao;
 
 import java.util.List;
 
@@ -9,9 +9,5 @@ public interface IDaoEspecialidad {
   	  public void Add(Especialidad especialidad);
 	
 	  public List<Especialidad> ReadAll();
-	
-	  public void Update(Especialidad especialidad);
-	
-	  public void Delete(Especialidad especialidad);
     
 }

@@ -49,8 +49,8 @@ public class Paciente implements Serializable {
     private boolean activo;
 
     // Agregamos listado de turnos
-    @OneToMany(cascade = { CascadeType.ALL })
-    @JoinColumn(name = "id_Turno")
+    @OneToMany(mappedBy = "paciente", cascade = { CascadeType.ALL })
+    //@JoinColumn(name = "id_Turno")
     List<Turno> listaTurnos = new ArrayList<Turno>();
 
     // Constructor en blanco

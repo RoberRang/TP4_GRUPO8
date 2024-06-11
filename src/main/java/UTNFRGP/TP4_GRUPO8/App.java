@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import dao.daoEspecialidad;
-import dao.daoMedico;
-import dao.daoPaciente;
-import dao.daoTurno;
-import dao.daoUsuario;
+import daoImpl.daoEspecialidad;
+import daoImpl.daoMedico;
+import daoImpl.daoPaciente;
+import daoImpl.daoTurno;
+import daoImpl.daoUsuario;
 import entidad.Especialidad;
 import entidad.EstadoTurno;
 import entidad.Medico;
@@ -90,7 +90,7 @@ public class App
     	}
     	
     	//Alta de turnos 
-    	
+    
     	daoTurno daotur = (daoTurno) appContext.getBean("nuevoDaoTurno"); // new daoTurno();
     	List<Medico> medicos = daomed.ReadAll();
     	List<Paciente> pacientes = daopac.ReadAll();

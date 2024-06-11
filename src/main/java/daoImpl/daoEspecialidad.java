@@ -1,12 +1,13 @@
-package dao;
+package daoImpl;
 
 import java.util.List;
 
 import org.hibernate.Session;
 
-import Idao.IDaoEspecialidad;
+import dao.IDaoEspecialidad;
 import entidad.Especialidad;
 import entidad.Usuario;
+import resources.ConfigHibernate;
 
 public class daoEspecialidad implements IDaoEspecialidad {
 	
@@ -36,15 +37,4 @@ public class daoEspecialidad implements IDaoEspecialidad {
 		return list;
 	}
 
-	@Override
-	public void Update(Especialidad especialidad) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void Delete(Especialidad especialidad) {
-		// TODO Auto-generated method stub
-		
-	}	
 }

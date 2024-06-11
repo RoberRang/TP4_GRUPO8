@@ -1,18 +1,17 @@
-package Idao;
+package negocio;
 
 import java.util.List;
 
+import daoImpl.daoMedico;
 import entidad.Medico;
 
+public interface IMedicoNegocio {
 
-public interface IDaoMedico {
-	
-	public void Add(Medico medico);
+public void Add(daoMedico daomedico);
 	
 	public List<Medico> ReadAll();
 	
 	public void Update(Medico medico);
 	
 	public void Delete(Medico medico);
-
 }

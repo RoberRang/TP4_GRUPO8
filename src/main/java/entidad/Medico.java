@@ -66,6 +66,7 @@ public class Medico implements Serializable {
 	@OneToMany(mappedBy = "medico", cascade = { CascadeType.ALL })
 	// @JoinColumn (name="Id_Turno")
 	List<Turno> listaTurnos = new ArrayList<Turno>();
+	
 	@Column(name = "Activo")
 	private boolean activo;
 

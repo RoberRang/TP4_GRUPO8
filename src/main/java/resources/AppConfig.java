@@ -1,14 +1,13 @@
 package resources;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import dao.daoEspecialidad;
-import dao.daoMedico;
-import dao.daoPaciente;
-import dao.daoTurno;
-import dao.daoUsuario;
+import daoImpl.daoEspecialidad;
+import daoImpl.daoMedico;
+import daoImpl.daoPaciente;
+import daoImpl.daoTurno;
+import daoImpl.daoUsuario;
 import entidad.Especialidad;
 import entidad.Medico;
 import entidad.Paciente;

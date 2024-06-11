@@ -1,11 +1,13 @@
-package Idao;
+package negocio;
 
 import java.util.List;
 
+import daoImpl.daoPaciente;
 import entidad.Paciente;
 
-public interface IDaoPaciente {
-	public void Add(Paciente paciente);
+public interface IPacienteNegocio {
+
+public void Add(daoPaciente daopaciente);
 	
 	public List<Paciente> ReadAll();
 	
