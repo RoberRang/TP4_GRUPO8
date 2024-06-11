@@ -22,10 +22,12 @@ public class EspecialidadNegocio implements IEspecialidadNegocio {
 	public void setDaoEspecialidad(IDaoEspecialidad daoEspecialidad) {
 		this.daoEspecialidad = daoEspecialidad;
 	}
-
 	
-	public void Add(daoEspecialidad daoEspecialidad) {
-		this.daoEspecialidad = daoEspecialidad;
+	// FIN SPRING CORE
+	
+	public void Add(Especialidad especialidad) {
+		
+		daoEspecialidad.Add(especialidad);
 		
 	}
 	

@@ -7,6 +7,6 @@ import entidad.Usuario;
 
 public interface IUsuarioNegocio {
 	
-	public void Add(daoUsuario usuario);
+	public void Add(Usuario usuario);
 	public List<Usuario> ReadAll();
 }

@@ -27,9 +27,9 @@ public class PacienteNegocio implements IPacienteNegocio {
 
 
 
-	public void Add(daoPaciente daopaciente) {
+	public void Add(Paciente paciente) {
 		
-		this.daoPaciente = daoPaciente;
+		daoPaciente.Add(paciente);
 		
 	}
 

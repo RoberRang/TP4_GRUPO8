@@ -28,9 +28,9 @@ public class UsuarioNegocio implements IUsuarioNegocio {
 
 
 
-	public void Add(daoUsuario usuario) {
+	public void Add(Usuario usuario) {
 		
-		this.daoUsuario = usuario;
+		daoUsuario.Add(usuario);
 		
 	}
 

@@ -27,9 +27,9 @@ public class TurnoNegocio implements ITurnoNegocio {
 
 
 
-	public void Add(daoTurno daoturno) {
+	public void Add(Turno turno) {
 		
-		this.daoTurno = daoTurno;
+		daoTurno.Add(turno);;
 		
 	}
 
@@ -42,14 +42,14 @@ public class TurnoNegocio implements ITurnoNegocio {
 
 	public void Update(Turno turno) {
 		
-		this.daoTurno.Update(turno);
+		daoTurno.Update(turno);
 		
 	}
 
 
 	public void Delete(Turno turno) {
 		
-		this.daoTurno.Delete(turno);
+		daoTurno.Delete(turno);
 		
 	}
 

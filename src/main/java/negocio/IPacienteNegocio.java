@@ -7,7 +7,7 @@ import entidad.Paciente;
 
 public interface IPacienteNegocio {
 
-public void Add(daoPaciente daopaciente);
+public void Add(Paciente paciente);
 	
 	public List<Paciente> ReadAll();
 	

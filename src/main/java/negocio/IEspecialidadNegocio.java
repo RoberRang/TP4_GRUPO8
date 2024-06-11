@@ -7,7 +7,7 @@ import entidad.Especialidad;
 
 public interface IEspecialidadNegocio {
 	
-	  public void Add(daoEspecialidad daoEspecialidad);
+	  public void Add(Especialidad especialidad);
 	
 	  public List<Especialidad> ReadAll();
 	

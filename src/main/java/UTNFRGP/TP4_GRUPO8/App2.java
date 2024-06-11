@@ -27,7 +27,7 @@ public class App2 {
 
 		//
 		ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
-		daoMedico medicoDao = (daoMedico)appContext.getBean("nuevoDaoMedico");
+		daoMedico medicoDao = (daoMedico)appContext.getBean("beanDaoMedico");
 		List<Medico> medicos =  medicoDao.mostrarMedicosOrdenadosPorLegajoDesc();
 
 		for (Medico medico : medicos) {
@@ -113,7 +113,7 @@ public class App2 {
 		System.out.println("Máximo número de legajo entre los médicos: " + maxLegajo);
 
 		//daoTurno turnoDao = new daoTurno();		
-		daoTurno turnoDao = (daoTurno)appContext.getBean("nuevoDaoTurno");
+		daoTurno turnoDao = (daoTurno)appContext.getBean("beanDaoTurno");
 
 		String fechaInicio = "1988-05-01";
 		String fechaFin = "2025-01-01";

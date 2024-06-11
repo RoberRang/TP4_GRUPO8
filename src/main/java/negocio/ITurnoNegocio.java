@@ -7,7 +7,7 @@ import entidad.Turno;
 
 public interface ITurnoNegocio {
 
-	public void Add(daoTurno daoturno);
+	public void Add(Turno turno);
 	
 	public List<Turno> ReadAll();
 	

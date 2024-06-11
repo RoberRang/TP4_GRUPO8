@@ -26,12 +26,13 @@ public class MedicoNegocio implements IMedicoNegocio {
 	public void setDaoMedico(IDaoMedico daoMedico) {
 		this.daoMedico = daoMedico;
 	}
+	
+	// FIN SPRING CORE
 
 
-
-	public void Add(daoMedico daomedico) {
+	public void Add(Medico medico) {
 		
-		this.daoMedico = daomedico;
+		daoMedico.Add(medico);
 		
 	}
 
@@ -44,15 +45,14 @@ public class MedicoNegocio implements IMedicoNegocio {
 
 	public void Update(Medico medico) {
 		
-		//Revisar, debería ser boolean
-		this.daoMedico.Update(medico);
+		daoMedico.Update(medico);
 		
 	}
 
 
 	public void Delete(Medico medico) {
 		
-		this.daoMedico.Delete(medico);
+		daoMedico.Delete(medico);
 		
 	}
 
