@@ -27,3 +27,5 @@ replay_pid*
 ~/pom.xml
 ~/hibernate.cfg.xml
 target/classes/hibernate.cfg.xml
+.settings/org.eclipse.jdt.core.prefs
+.vscode/settings.json
