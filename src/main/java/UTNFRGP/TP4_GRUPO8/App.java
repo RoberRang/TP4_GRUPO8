@@ -68,7 +68,7 @@ public class App
     	    med1.setCorreo("medico_" + i + "_@intramed.net");
     	    med1.setTeléfono("telefono_" + i);
             med1.setActivo(true);
-    	    
+    	    med1.setJornada("Lunes a viernes de 8 a 16");
     	    // Asignacion de una especialidad al médico y usuario 
     	    // asignamos una especialidad y el usuario a cada médico de forma secuencial
     	    Especialidad especialidad = especialidades.get(i - 1); // con i-1 porque el indice arranca en 0

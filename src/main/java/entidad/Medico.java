@@ -70,6 +70,17 @@ public class Medico implements Serializable {
 	@Column(name = "Activo")
 	private boolean activo;
 
+	@Column(name = "Jornada")
+	private String jornada;	
+
+	public String getJornada() {
+		return jornada;
+	}
+
+	public void setJornada(String jornada) {
+		this.jornada = jornada;
+	}
+
 	public Medico() {
 
 	}
@@ -185,7 +196,7 @@ public class Medico implements Serializable {
 	public String toString() {
 		return "Medico [Legajo=" + legajo + ", Nombre=" + nombre + ", Apellido=" + apellido + ", Sexo=" + sexo
 				+ ", FNac=" + fNac + ", Dirección=" + direccion + ", Localidad=" + localidad + ", Correo=" + correo
-				+ ", Teléfono=" + telefono + ", Activo: " + activo + "]";
+				+ ", Teléfono=" + telefono + ", Activo: " + activo + " Jornada:" + jornada + "]";
 	}
 
 }
