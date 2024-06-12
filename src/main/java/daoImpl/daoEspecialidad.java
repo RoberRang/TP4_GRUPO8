@@ -3,13 +3,19 @@ package daoImpl;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import dao.IDaoEspecialidad;
 import entidad.Especialidad;
 import entidad.Usuario;
 import resources.ConfigHibernate;
 
+@Repository
 public class daoEspecialidad implements IDaoEspecialidad {
+	
+	public daoEspecialidad () {
+		
+	}
 	
 	public void Add(Especialidad especialidad) {
 		

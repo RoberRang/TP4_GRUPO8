@@ -2,13 +2,18 @@ package negocioImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import dao.IDaoPaciente;
 import daoImpl.daoPaciente;
 import entidad.Paciente;
 import negocio.IPacienteNegocio;
 
+@Service
 public class PacienteNegocio implements IPacienteNegocio {
 	
+	@Autowired
 	private IDaoPaciente daoPaciente;
 	
 	public PacienteNegocio() {

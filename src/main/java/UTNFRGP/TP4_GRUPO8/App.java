@@ -181,7 +181,7 @@ public class App
             System.out.println("   Usuario del Médico: " + usuarioDelMedico.getNombre());
         }
         
-        
+       
       //Alta, Modificacion y borrado de turno
         
         Turno turn1 = (Turno) appContext.getBean("beanTurno"); //new Turno();
@@ -221,12 +221,12 @@ public class App
             }
             System.out.println(); 
         }
-        
+       
       //Alta, Modificacion y borrado de turno
 
         MedicoNegocio medicoNeg1 = (MedicoNegocio)appContext.getBean("beanMedicoNegocio");
         List<Medico> medicos1 = medicoNeg1.ReadAll();
-        TurnoNegocio turnoNeg1 = (TurnoNegocio)appContext.getBean("beanTurnoNegocio");
+        //TurnoNegocio turnoNeg1 = (TurnoNegocio)appContext.getBean("beanTurnoNegocio");
         PacienteNegocio pacienteNeg1 = (PacienteNegocio)appContext.getBean("beanPacienteNegocio");
         List<Paciente> pacientes1 = pacienteNeg1.ReadAll();
         
@@ -243,7 +243,7 @@ public class App
         turn2.setMedico(medico1);
         turn2.setPaciente(paciente1);
 
-        turnoNeg1.Add(turn2);
+        turnoNeg.Add(turn2);
         
         Turno turn3 = (Turno) appContext.getBean("beanTurno"); // new Turno();
         turn3.setEstado(EstadoTurno.PENDIENTE);
@@ -253,7 +253,7 @@ public class App
         turn3.setMedico(medico1);
         turn3.setPaciente(paciente1);
         
-        turnoNeg1.Add(turn3);
+        turnoNeg.Add(turn3);
         
         Turno turn4 = (Turno) appContext.getBean("beanTurno"); // new Turno();
         turn4.setEstado(EstadoTurno.PENDIENTE);
@@ -263,7 +263,7 @@ public class App
         turn4.setMedico(medico1);
         turn4.setPaciente(paciente1);
         
-        turnoNeg1.Add(turn4);
+        turnoNeg.Add(turn4);
          
         Turno turn5 = (Turno) appContext.getBean("beanTurno"); //new Turno();
         turn5.setEstado(EstadoTurno.PRESENTE);
@@ -273,7 +273,7 @@ public class App
         turn5.setMedico(medico1);
         turn5.setPaciente(paciente1);
         
-        turnoNeg1.Add(turn5);
+        turnoNeg.Add(turn5);
         
         Turno turn6 = (Turno) appContext.getBean("beanTurno"); //new Turno();
         turn6.setEstado(EstadoTurno.PRESENTE);
@@ -283,7 +283,7 @@ public class App
         turn6.setMedico(medico1);
         turn6.setPaciente(paciente1);
         
-        turnoNeg1.Add(turn6);
+        turnoNeg.Add(turn6);
         
         Turno turn7 = (Turno) appContext.getBean("beanTurno"); //new Turno();
         turn7.setEstado(EstadoTurno.AUSENTE);
@@ -293,6 +293,6 @@ public class App
         turn7.setMedico(medico1);
         turn7.setPaciente(paciente1);
         
-        turnoNeg1.Add(turn7);
+        turnoNeg.Add(turn7);
     }
 }

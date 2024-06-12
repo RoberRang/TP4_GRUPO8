@@ -4,12 +4,15 @@ import java.util.List;
 import java.time.LocalDate;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
+import dao.IDaoTurno;
 import entidad.EstadoTurno;
 import entidad.Turno;
 import resources.ConfigHibernate;
 
-public class daoTurno {
+@Repository
+public class daoTurno implements IDaoTurno {
 
 	public void Add(Turno turno) {
 

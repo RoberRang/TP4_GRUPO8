@@ -1,6 +1,7 @@
 package resources;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import daoImpl.daoEspecialidad;
@@ -20,6 +21,8 @@ import negocioImpl.TurnoNegocio;
 import negocioImpl.UsuarioNegocio;
 
 @Configuration
+
+
 public class AppConfig {
 
 	// BEANS ENTIDADES
@@ -83,6 +86,12 @@ public class AppConfig {
     }
     
     @Bean
+    public TurnoNegocio beanTurnoNegocio() {
+        TurnoNegocio turnoNeg = new TurnoNegocio();
+        return turnoNeg;
+    }
+    
+    @Bean
     public MedicoNegocio beanMedicoNegocio() {
         MedicoNegocio medicoNeg = new MedicoNegocio();
         return medicoNeg;
@@ -92,11 +101,6 @@ public class AppConfig {
     public PacienteNegocio beanPacienteNegocio() {
         PacienteNegocio pacienteNeg = new PacienteNegocio();
         return pacienteNeg;
-    }
-    @Bean
-    public TurnoNegocio beanTurnoNegocio() {
-        TurnoNegocio turnoNeg = new TurnoNegocio();
-        return turnoNeg;
     }
  
     @Bean

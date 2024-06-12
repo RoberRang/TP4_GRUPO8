@@ -2,19 +2,22 @@ package negocioImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import dao.IDaoTurno;
-import daoImpl.daoTurno;
 import entidad.Turno;
 import negocio.ITurnoNegocio;
 
+@Service
 public class TurnoNegocio implements ITurnoNegocio {
 
+	@Autowired
 	private IDaoTurno daoTurno;
 	
 	public TurnoNegocio() {
 		
 	}
-
 
 	public IDaoTurno getDaoTurno() {
 		return daoTurno;
@@ -29,7 +32,7 @@ public class TurnoNegocio implements ITurnoNegocio {
 
 	public void Add(Turno turno) {
 		
-		daoTurno.Add(turno);;
+		daoTurno.Add(turno);
 		
 	}
 

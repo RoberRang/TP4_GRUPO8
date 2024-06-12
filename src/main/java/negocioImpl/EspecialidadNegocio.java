@@ -2,17 +2,26 @@ package negocioImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import dao.IDaoEspecialidad;
 import entidad.Especialidad;
 import negocio.IEspecialidadNegocio;
 import daoImpl.daoEspecialidad;
 
+@Service
 public class EspecialidadNegocio implements IEspecialidadNegocio {
-
+	
+	@Autowired
 	private IDaoEspecialidad daoEspecialidad; 
 	
 	public EspecialidadNegocio() {
 		
+	}
+	
+	public EspecialidadNegocio(daoEspecialidad daoespe) {
+		this.daoEspecialidad = daoespe;
 	}
 	
 	public IDaoEspecialidad getDaoEspecialidad() {

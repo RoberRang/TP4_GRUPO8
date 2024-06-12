@@ -3,11 +3,13 @@ package daoImpl;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import dao.IDaoPaciente;
 import entidad.Paciente;
 import resources.ConfigHibernate;
 
+@Repository
 public class daoPaciente implements IDaoPaciente {
 	
 
