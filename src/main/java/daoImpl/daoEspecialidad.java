@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import dao.IDaoEspecialidad;
 import entidad.Especialidad;
-import entidad.Usuario;
+
 import resources.ConfigHibernate;
 
 @Repository
@@ -36,6 +36,7 @@ public class daoEspecialidad implements IDaoEspecialidad {
 		Session session = ch.abrirConexion();
 		
 		session.beginTransaction();
+		@SuppressWarnings({ "unchecked" })
 		List<Especialidad> list = (List<Especialidad>)session.createQuery("from Especialidad").list();
 		
 		ch.cerrarConexion();

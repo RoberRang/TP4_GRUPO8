@@ -2,7 +2,6 @@ package negocio;
 
 import java.util.List;
 
-import daoImpl.daoMedico;
 import entidad.Medico;
 
 public interface IMedicoNegocio {

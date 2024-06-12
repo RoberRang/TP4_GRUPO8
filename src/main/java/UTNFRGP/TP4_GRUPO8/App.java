@@ -6,11 +6,6 @@ import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import daoImpl.daoEspecialidad;
-import daoImpl.daoMedico;
-import daoImpl.daoPaciente;
-import daoImpl.daoTurno;
-import daoImpl.daoUsuario;
 import entidad.Especialidad;
 import entidad.EstadoTurno;
 import entidad.Medico;
@@ -32,6 +27,7 @@ public class App
 {
     public static void main( String[] args )
     {
+        @SuppressWarnings("resource")
         ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
         
         //Inicializamos beans de negocio

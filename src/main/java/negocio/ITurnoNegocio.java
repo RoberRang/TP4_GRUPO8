@@ -2,7 +2,6 @@ package negocio;
 
 import java.util.List;
 
-import daoImpl.daoTurno;
 import entidad.Turno;
 
 public interface ITurnoNegocio {

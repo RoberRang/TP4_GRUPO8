@@ -7,7 +7,6 @@ import java.time.format.DateTimeFormatter;
 
 import org.junit.Test;
 
-import javafx.util.converter.LocalDateStringConverter;
 
 public class MedicoTest {
 

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import dao.IDaoMedico;
 import entidad.Medico;
 import negocio.IMedicoNegocio;
-import daoImpl.daoMedico;
 
 @Service
 public class MedicoNegocio implements IMedicoNegocio {

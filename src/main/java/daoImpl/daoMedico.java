@@ -33,6 +33,7 @@ public class daoMedico implements IDaoMedico {
 		Session session = ch.abrirConexion();
 		
 		session.beginTransaction();
+		@SuppressWarnings({ "unchecked" })
 		List<Medico> list = (List<Medico>)session.createQuery("from Medico").list();
 		
 		ch.cerrarConexion();
@@ -71,7 +72,7 @@ public class daoMedico implements IDaoMedico {
 	    ConfigHibernate ch = new ConfigHibernate();
 	    Session session = ch.abrirConexion();    
 	
-	    @SuppressWarnings({ "unchecked", "unused" })
+	    @SuppressWarnings({ "unchecked" })
 		List<Medico> listaMedicos = (List<Medico>) session.createQuery("FROM Medico m ORDER BY m.legajo DESC").list();	    
 	    
 	    ch.cerrarConexion();
@@ -128,7 +129,8 @@ public class daoMedico implements IDaoMedico {
 	public List<Object[]> MostrarListadoTurnosPorLegajoYFecha(int legajoMedico, String fecha) {
 		ConfigHibernate ch = new ConfigHibernate();
 	    Session session = ch.abrirConexion();
-	    
+		
+	    @SuppressWarnings({ "unchecked" })
 	    List<Object[]> listaTurnos = (List<Object[]>)session.createQuery("SELECT m.legajo, lt.fecha, lt.estado FROM Medico as m INNER JOIN m.listaTurnos lt " +
                 "WHERE m.legajo = :legajoMedico " +
                 "AND lt.fecha = :fecha")

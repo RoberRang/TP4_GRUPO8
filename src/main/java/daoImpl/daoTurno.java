@@ -1,7 +1,6 @@
 package daoImpl;
 
 import java.util.List;
-import java.time.LocalDate;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -33,6 +32,7 @@ public class daoTurno implements IDaoTurno {
 		Session session = ch.abrirConexion();
 
 		session.beginTransaction();
+		@SuppressWarnings({ "unchecked" })
 		List<Turno> list = (List<Turno>) session.createQuery("from Turno").list();
 
 		ch.cerrarConexion();

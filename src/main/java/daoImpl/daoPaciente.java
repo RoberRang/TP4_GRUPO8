@@ -33,6 +33,7 @@ public class daoPaciente implements IDaoPaciente {
 		Session session = ch.abrirConexion();
 		
 		session.beginTransaction();
+		@SuppressWarnings({ "unchecked" })
 		List<Paciente> list = (List<Paciente>)session.createQuery("from Paciente").list();
 		
 		ch.cerrarConexion();

@@ -2,7 +2,6 @@ package negocio;
 
 import java.util.List;
 
-import daoImpl.daoUsuario;
 import entidad.Usuario;
 
 public interface IUsuarioNegocio {

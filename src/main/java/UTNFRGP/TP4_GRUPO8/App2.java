@@ -8,11 +8,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import daoImpl.daoMedico;
 import daoImpl.daoTurno;
 
-import java.time.LocalDate;
-
 import entidad.EstadoTurno;
 import entidad.Medico;
-import entidad.Turno;
 import resources.AppConfig;
 
 public class App2 {
@@ -26,6 +23,7 @@ public class App2 {
 		// se deben mostrar son todos. HQL SELECT ALL.
 
 		//
+		@SuppressWarnings("resource")
 		ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
 		daoMedico medicoDao = (daoMedico)appContext.getBean("beanDaoMedico");
 		List<Medico> medicos =  medicoDao.mostrarMedicosOrdenadosPorLegajoDesc();
